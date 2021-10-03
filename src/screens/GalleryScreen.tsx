@@ -5,6 +5,7 @@ import { RootState } from "../store";
 import { requestPhotos } from "../store/galleryActions";
 import AppHeader from '../components/Header';
 import { AppImage } from '../components/Image';
+import { Photo } from '../interfaces';
 
 export const GalleryScreen = ({navigation}: {navigation: any}) => {
 
@@ -22,10 +23,10 @@ export const GalleryScreen = ({navigation}: {navigation: any}) => {
             <FlatList
             data={photos}
             numColumns={4}
-            keyExtractor={(el: any, index: number) => index.toString()}
+            keyExtractor={(el: Photo) => el.id.toString()}
             onEndReachedThreshold={1}
             onEndReached={() => dispatch(requestPhotos())}
-            renderItem={({item}: {item: any}) => <AppImage photo={item} navigation={navigation}/>}/>
+            renderItem={({item}: {item: Photo}) => <AppImage photo={item} navigation={navigation}/>}/>
         </View>
     );
 

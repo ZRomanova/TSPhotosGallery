@@ -4,6 +4,7 @@ import {  useSelector } from "react-redux";
 import { RootState } from "../store";
 import AppHeader from '../components/Header';
 import { AppImage } from '../components/Image';
+import { Photo } from '../interfaces';
 
 export const BookedScreen = ({navigation}: {navigation: any}) => {
 
@@ -15,8 +16,8 @@ export const BookedScreen = ({navigation}: {navigation: any}) => {
             <FlatList
             data={photos}
             numColumns={4}
-            keyExtractor={(el: any, index: number) => index.toString()}
-            renderItem={({item}: {item: any}) => <AppImage photo={item} navigation={navigation}/>}/>
+            keyExtractor={(el: Photo) => el.id.toString()}
+            renderItem={({item}: {item: Photo}) => <AppImage photo={item} navigation={navigation}/>}/>
         </View>
     );
 

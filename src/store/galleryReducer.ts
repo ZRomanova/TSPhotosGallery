@@ -1,3 +1,4 @@
+import { Photo } from "../interfaces"
 import { DELETE_PHOTO, FETCH_PHOTOS, HIDE_LOADER, SHOW_LOADER, TOGGLE_BOOKED } from "./types"
 
 const initialState = {
@@ -6,7 +7,7 @@ const initialState = {
     loader: false
 }
 
-export const galleryReducer = (state: any = initialState, action: any) => {
+export const galleryReducer = (state: {photos: Photo[], offset: number, loader: boolean} = initialState, action: any) => {
     switch (action.type) {
         case SHOW_LOADER: 
             return {
