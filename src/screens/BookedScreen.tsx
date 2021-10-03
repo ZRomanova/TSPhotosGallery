@@ -1,4 +1,4 @@
-import {StyleSheet, View, FlatList} from 'react-native'
+import {StyleSheet, View, FlatList, ActivityIndicator, Text} from 'react-native'
 import React from "react";
 import {  useSelector } from "react-redux";
 import { RootState } from "../store";
@@ -8,7 +8,8 @@ import { AppImage } from '../components/Image';
 export const BookedScreen = ({navigation}: {navigation: any}) => {
 
     const photos = useSelector((state: RootState) => state.gallery.photos).filter((p: any) => p.booked )
-    
+    const loader = useSelector((state: RootState) => state.gallery.loader)
+
     if (photos.length) return (
         <View style={styles.container}>
             <FlatList
@@ -19,7 +20,13 @@ export const BookedScreen = ({navigation}: {navigation: any}) => {
         </View>
     );
 
-    return null
+    if (loader) return <View style={styles.center}>
+                <ActivityIndicator color='#A10D99'/>
+            </View>
+
+    return <View style={styles.center}>
+            <Text>Нет избранных</Text>
+        </View>
 }
 
 const styles = StyleSheet.create({
@@ -29,6 +36,11 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         marginTop: 10
+    },
+    center: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
 

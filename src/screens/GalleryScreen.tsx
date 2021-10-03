@@ -1,4 +1,4 @@
-import {StyleSheet, View, FlatList, ActivityIndicator } from 'react-native'
+import {StyleSheet, View, FlatList, ActivityIndicator, Text } from 'react-native'
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
@@ -11,6 +11,7 @@ export const GalleryScreen = ({navigation}: {navigation: any}) => {
     const dispatch = useDispatch()
 
     const photos = useSelector((state: RootState) => state.gallery.photos)
+    const loader = useSelector((state: RootState) => state.gallery.loader)
 
     useEffect(() => {
         dispatch(requestPhotos())
@@ -26,9 +27,13 @@ export const GalleryScreen = ({navigation}: {navigation: any}) => {
         </View>
     );
 
-    return <View style={styles.center}>
+    if (loader) return <View style={styles.center}>
                 <ActivityIndicator color='#A10D99'/>
             </View>
+
+    return <View style={styles.center}>
+            <Text>Нет изображений</Text>
+        </View>
 }
 
 const styles = StyleSheet.create({

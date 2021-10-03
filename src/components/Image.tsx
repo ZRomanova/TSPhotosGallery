@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         height: imageSize,
         borderRadius: 10,
         margin: 2,
-        backgroundColor: 'red'
+        backgroundColor: '#94949D'
     },
     hearthIcon: {
         position: "absolute",
