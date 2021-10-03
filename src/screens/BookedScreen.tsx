@@ -2,36 +2,20 @@ import {StyleSheet, View, FlatList} from 'react-native'
 import React from "react";
 import {  useSelector } from "react-redux";
 import { RootState } from "../store";
-import { AppImageList } from '../components/ImageList';
 import AppHeader from '../components/Header';
+import { AppImage } from '../components/Image';
 
 export const BookedScreen = ({navigation}: {navigation: any}) => {
 
-    function listToMatrix(list: any[], elementsPerSubArray: number) {
-        var matrix: any[][] = [], i: number, k: number;
-    
-        for (i = 0, k = -1; i < list.length; i++) {
-            if (i % elementsPerSubArray === 0) {
-                k++;
-                matrix[k] = [];
-            }
-    
-            matrix[k].push(list[i]);
-        }
-    
-        return matrix;
-    }
-
     const photos = useSelector((state: RootState) => state.gallery.photos).filter((p: any) => p.booked )
-
-    let transformedPhotos = listToMatrix(photos, 4)
     
-    if (transformedPhotos.length) return (
+    if (photos.length) return (
         <View style={styles.container}>
             <FlatList
-            data={transformedPhotos}
+            data={photos}
+            numColumns={4}
             keyExtractor={(el: any, index: number) => index.toString()}
-            renderItem={({item}: {item: any}) => <AppImageList photos={item} navigation={navigation}/>}/>
+            renderItem={({item}: {item: any}) => <AppImage photo={item} navigation={navigation}/>}/>
         </View>
     );
 

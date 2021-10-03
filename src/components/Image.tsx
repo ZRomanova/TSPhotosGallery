@@ -5,7 +5,7 @@ const windowWidth = Dimensions.get('window').width - 30
 const imageSize = windowWidth / 4
 
 export const AppImage = ({photo, navigation}: {photo: any, navigation: any}) => {
-
+    console.log(photo)
     return <TouchableOpacity onPress={() => {navigation.navigate('Photo', {photo})}}>
         <View style={styles.imageContainer}>
             <Image
