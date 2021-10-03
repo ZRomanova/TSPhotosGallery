@@ -20,7 +20,7 @@ const AppHeader: React.FC<{ navigation: any, isBackButtonEnable?: boolean, scene
                 &&
                 <TouchableOpacity
                     style={styles.goBackButtonContainer}
-                    onPress={() => navigation.popToTop()}
+                    onPress={() => navigation.goBack()}
                 >
                     <Text style={styles.goBackButtonText}>◀</Text>
                 </TouchableOpacity>

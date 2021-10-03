@@ -14,16 +14,17 @@ export const PhotoScreen = ({navigation}: {navigation: any}) => {
     const [isDeleteDisabled, setIsDeleteDisabled] = useState<boolean>(false)
 
     const [curPhoto, setCurlPhoto] = useState(navigation.state.params.photo)
+    const height = windowWidth * curPhoto.height / curPhoto.width
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Image style={styles.image} source={{
+                <Image style={{height, width: windowWidth}} source={{
                     uri: curPhoto.src.large,
                 }}/>
             </View>
             <View style={styles.buttonsContainer}>
                 <TouchableOpacity
-                    style={[{borderBottomWidth: 2, borderBottomColor: 'gray'}, styles.text]}
+                    style={[{borderBottomWidth: 1, borderBottomColor: 'gray'}, styles.text]}
                     disabled={isToggleBookedDisabled}
                     onPress={() => {
                     setIsToggleBookedDisabled(true)
@@ -40,7 +41,7 @@ export const PhotoScreen = ({navigation}: {navigation: any}) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                     disabled={isDeleteDisabled}
-                    style={ styles.text}
+                    style={[{borderTopWidth: 1, borderBottomColor: 'gray'}, styles.text]}
                     onPress={() => {
                         setIsDeleteDisabled(true)
                         dispatch(deletePhoto(curPhoto.id))
@@ -55,10 +56,7 @@ export const PhotoScreen = ({navigation}: {navigation: any}) => {
 };
 
 const styles = StyleSheet.create({
-    image: {
-        width: windowWidth,
-        height: windowWidth
-    },
+
     imageContainer: {
         justifyContent: "center",
         height: '100%',
@@ -70,7 +68,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         width: '90%',
         overflow: "hidden",
-        height: 85
+        height: 85,
+        zIndex: 10
     },
     container: {
         height: '100%',
