@@ -23,6 +23,8 @@ export const GalleryScreen = ({navigation}: {navigation: any}) => {
             data={photos}
             numColumns={4}
             keyExtractor={(el: any, index: number) => index.toString()}
+            onEndReachedThreshold={1}
+            onEndReached={() => dispatch(requestPhotos())}
             renderItem={({item}: {item: any}) => <AppImage photo={item} navigation={navigation}/>}/>
         </View>
     );

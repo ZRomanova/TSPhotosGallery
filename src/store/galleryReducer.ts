@@ -22,7 +22,7 @@ export const galleryReducer = (state: any = initialState, action: any) => {
             return {
                 ...state,
                 offset: state.offset + 1,
-                photos: action.payload.photos
+                photos: state.photos.concat(action.payload.photos)
             }
         case TOGGLE_BOOKED: 
             return {
