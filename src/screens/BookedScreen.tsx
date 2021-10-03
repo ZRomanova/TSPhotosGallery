@@ -16,7 +16,7 @@ export const BookedScreen = ({navigation}: {navigation: any}) => {
             <FlatList
             data={photos}
             numColumns={4}
-            keyExtractor={(el: Photo) => el.id.toString()}
+            keyExtractor={(el: Photo, index: number) => index.toString()}
             renderItem={({item}: {item: Photo}) => <AppImage photo={item} navigation={navigation}/>}/>
         </View>
     );

@@ -23,7 +23,7 @@ export const GalleryScreen = ({navigation}: {navigation: any}) => {
             <FlatList
             data={photos}
             numColumns={4}
-            keyExtractor={(el: Photo) => el.id.toString()}
+            keyExtractor={(el: Photo, index: number) => index.toString()}
             onEndReachedThreshold={1}
             onEndReached={() => dispatch(requestPhotos())}
             renderItem={({item}: {item: Photo}) => <AppImage photo={item} navigation={navigation}/>}/>
