@@ -23,6 +23,6 @@ function* sagaWorker(): Generator<any> {
 }
 
 async function fetchPhotos(page: Number) {
-  const response = await fetch(`https://api.pexels.com/v1/curated?page=${page}&per_page=40`, {headers: {Authorization: '563492ad6f91700001000001912c5fcd9e6d4ffc8f9e569dacd4de8f'}})
+  const response = await fetch(`https://api.pexels.com/v1/curated?page=${page}&per_page=60`, {headers: {Authorization: '563492ad6f91700001000001912c5fcd9e6d4ffc8f9e569dacd4de8f'}})
    return await response.json()
 }

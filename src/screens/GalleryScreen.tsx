@@ -1,4 +1,4 @@
-import {StyleSheet, View, FlatList, Text} from 'react-native'
+import {StyleSheet, View, FlatList, ActivityIndicator } from 'react-native'
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
@@ -41,7 +41,9 @@ export const GalleryScreen = ({navigation}: {navigation: any}) => {
         </View>
     );
 
-    return null
+    return <View style={styles.center}>
+                <ActivityIndicator color='#A10D99'/>
+            </View>
 }
 
 const styles = StyleSheet.create({
@@ -51,6 +53,11 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         marginTop: 10
+    },
+    center: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
 

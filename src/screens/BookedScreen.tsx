@@ -1,8 +1,7 @@
-import {StyleSheet, View, FlatList, Text} from 'react-native'
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {StyleSheet, View, FlatList} from 'react-native'
+import React from "react";
+import {  useSelector } from "react-redux";
 import { RootState } from "../store";
-import { requestPhotos } from "../store/galleryActions";
 import { AppImageList } from '../components/ImageList';
 import AppHeader from '../components/Header';
 
